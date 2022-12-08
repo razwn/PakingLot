@@ -8,6 +8,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "Cars", value = "/Cars")
@@ -17,7 +18,7 @@ public class Cars extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<CarDto> cars= carsBean.findAllCars();
+        List<CarDto> cars = carsBean.findAllCars();
         request.setAttribute("cars", cars);
         request.setAttribute("activePage", "Cars");
         request.setAttribute("numberOfFreeParkingSpots", 10);
@@ -26,6 +27,14 @@ public class Cars extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String[] carIdsAsString = request.getParameterValues("car_ids");
+        if (carIdsAsString != null) {
+            List<Long> carIds = new ArrayList<>();
+            for (String carIdString : carIdsAsString) {
+                carIds.add(Long.parseLong(carIdString));
+            }
+            carsBean.deleteCarsByIds(carIds);
+        }
+        response.sendRedirect(request.getContextPath() + "/Cars");
     }
 }

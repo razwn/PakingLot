@@ -1,8 +1,10 @@
 package com.parking.parkinglot.entities;
 
+import com.parking.parkinglot.common.CarDto;
 import jakarta.persistence.*;
 
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class User {
@@ -49,14 +51,15 @@ public class User {
         this.password = password;
     }
 
-    private Collection<Car> oneToMany;
+    private Collection<Car> cars; //oneToMany
 
     @OneToMany(mappedBy = "owner")
-    public Collection<Car> getOneToMany() {
-        return oneToMany;
+    public Collection<Car> getCars() {
+        return cars;
     }
 
-    public void setOneToMany(Collection<Car> oneToMany) {
-        this.oneToMany = oneToMany;
+    public void setCars(Collection<Car> cars) {
+        this.cars = cars;
     }
+
 }

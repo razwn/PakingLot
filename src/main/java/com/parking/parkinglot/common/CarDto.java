@@ -4,13 +4,13 @@ package com.parking.parkinglot.common;
 public class CarDto {
 
     Long id;
-    String licencePlate;
+    String licensePlate;
     String parkingSpot;
     String ownerName;
 
-    public CarDto(Long id, String licencePlate, String parkingSpot, String ownerName) {
+    public CarDto(Long id, String licensePlate, String parkingSpot, String ownerName) {
         this.id = id;
-        this.licencePlate = licencePlate;
+        this.licensePlate = licensePlate;
         this.parkingSpot = parkingSpot;
         this.ownerName = ownerName;
     }
@@ -19,8 +19,8 @@ public class CarDto {
         return id;
     }
 
-    public String getLicencePlate() {
-        return licencePlate;
+    public String getLicensePlate() {
+        return licensePlate;
     }
 
     public String getParkingSpot() {

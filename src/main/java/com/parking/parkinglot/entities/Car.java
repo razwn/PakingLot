@@ -6,25 +6,25 @@ import jakarta.persistence.*;
 public class Car {
     private Long id;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     @Id
     @GeneratedValue
     public Long getId() {
         return id;
     }
 
-    private String licensePlate;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    private String licencePlate;
 
     @Basic
     public String getLicensePlate() {
-        return licensePlate;
+        return licencePlate;
     }
 
-    public void setLicensePlate(String licensePlate) {
-        this.licensePlate = licensePlate;
+    public void setLicensePlate(String licencePlate) {
+        this.licencePlate = licencePlate;
     }
 
     private String parkingSpot;
